@@ -1,0 +1,6 @@
+bin/
+examples/
+test/
+.jsfmtrc
+.eslintrc
+.travis.yml
