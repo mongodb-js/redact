@@ -95,8 +95,9 @@ describe('mongodb-redact', function() {
     it('should redact general OS X user paths', function() {
       var res = redact('/Users/JohnDoe/Documents/letter.pages');
       assert.equal(res, '/Users/<user>/Documents/letter.pages');
+      res = redact('file:///Users/JohnDoe/Documents/letter.pages');
+      assert.equal(res, 'file:///Users/<user>/Documents/letter.pages');
     });
-
 
     it('should redact URLs', function() {
       var res = redact('http://www.google.com');
@@ -121,6 +122,11 @@ describe('mongodb-redact', function() {
       assert.equal(res, '/usr/<user>/documents/tan-numbers.txt');
       res = redact('/var/users/foobar/documents/tan-numbers.txt');
       assert.equal(res, '/var/users/<user>/documents/tan-numbers.txt');
+    });
+
+    it('should redact Compass Schema URL fragments', function() {
+      var res = redact('index.html?connection_id=e5938750-038e-4cab-b2ba-9ccb9ed7e2a2#schema/db.collection');
+      assert.equal(res, 'index.html?connection_id=e5938750-038e-4cab-b2ba-9ccb9ed7e2a2#schema/<namespace>');
     });
   });
 
