@@ -129,5 +129,23 @@ describe('mongodb-redact', function() {
       var res = redact('send me an email to john.doe@company.com please.');
       assert.equal(res, 'send me an email to <email> please.');
     });
+
+    it('should work on arrays of arrays', function() {
+      var res = redact([['foo@bar.com', 'bar@baz.net'], 'http://github.com/mongodb-js']);
+      assert.deepEqual(res, [['<email>', '<email>'], '<url>']);
+    });
+
+    it('should work on nested objects', function() {
+      var res = redact({
+        obj: {
+          path: '/Users/thomas/something.txt'
+        }
+      });
+      assert.deepEqual(res, {
+        obj: {
+          path: '/Users/<user>/something.txt'
+        }
+      });
+    });
   });
 });
