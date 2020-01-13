@@ -4,28 +4,15 @@
   "description": "Remove potentially sensitive information from objects without changing the shape.",
   "scripts": {
     "check": "mongodb-js-precommit",
-    "test": "mocha",
-    "ci": "./node_modules/istanbul/lib/cli.js cover _mocha -- -R spec ./test/*.test.js"
+    "test": "mocha"
   },
-  "check": {
-    "ignore": [
-      "coverage/*"
-    ]
-  },
-  "precommit": [
-    "check",
-    "test"
-  ],
   "dependencies": {
-    "lodash": "^4.16.6"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "coveralls": "^2.11.2",
-    "eslint-config-mongodb-js": "^2.2.0",
-    "istanbul": "^0.4.5",
-    "mocha": "~3.1.2",
-    "mongodb-js-precommit": "^0.2.9",
-    "pre-commit": "^1.0.10"
+    "eslint-config-mongodb-js": "^5.0.3",
+    "mocha": "~7.0.0",
+    "mongodb-js-precommit": "^2.0.0"
   },
   "keywords": [
     "mongodb",
