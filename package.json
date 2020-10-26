@@ -1,6 +1,6 @@
 {
   "name": "mongodb-redact",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Remove potentially sensitive information from objects without changing the shape.",
   "scripts": {
     "check": "mongodb-js-precommit",
