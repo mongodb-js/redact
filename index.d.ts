@@ -1,2 +1,2 @@
-declare function redact(input: string): string;
+declare function redact<T>(input: T): T;
 export = redact;
